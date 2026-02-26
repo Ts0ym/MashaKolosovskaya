@@ -1,0 +1,99 @@
+.root {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  pointer-events: none;
+  background:white;
+}
+
+.section {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.isVisible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.outer,
+.inner {
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+  filter: saturate(0.92) contrast(0.98) brightness(0.92);
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.18),
+      rgba(0, 0, 0, 0.08) 35%,
+      rgba(0, 0, 0, 0.18) 100%
+    ),
+    radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.08), transparent 62%);
+}
+
+.fallback {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.6), transparent 52%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(232, 226, 220, 0.94));
+  filter: none;
+}
+
+.overlayVeil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 248, 244, 0.52),
+      rgba(248, 245, 239, 0.22) 28%,
+      rgba(246, 242, 236, 0.08) 54%,
+      rgba(241, 236, 228, 0.22) 100%
+    );
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.overlayGlow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.18), transparent 54%),
+    radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.3), transparent 44%);
+  mix-blend-mode: screen;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+@media (max-width: 48rem) {
+  .bg {
+    background-position: 55% 50%;
+  }
+
+  .overlayVeil {
+    opacity: 0.8;
+  }
+}

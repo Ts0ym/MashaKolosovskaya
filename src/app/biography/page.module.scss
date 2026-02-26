@@ -1,0 +1,48 @@
+.group {
+  display: grid;
+  gap: 0;
+}
+
+.group > p + ul {
+  margin-block-start: 0.4rem;
+}
+
+.timelineList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: 0.5rem;
+  margin: 0;
+}
+
+.timelineDate {
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.linksList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+}
+
+.link {
+  color: inherit;
+  font-style: italic;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.04em;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}

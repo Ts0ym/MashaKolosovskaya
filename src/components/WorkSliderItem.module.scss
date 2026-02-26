@@ -1,0 +1,301 @@
+.item {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, clamp(26rem, 43vw, 42rem)) minmax(0, clamp(14rem, 18vw, 20rem));
+  block-size: 100%;
+  background: #f4f1eb;
+  transition:
+    grid-template-columns 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    inline-size 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    block-size 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 420ms ease;
+}
+
+
+.media {
+  position: relative;
+  min-inline-size: 0;
+  block-size: 100%;
+  overflow: clip;
+  background: #e8e5de;
+  transition: background-color 420ms ease;
+}
+
+.image {
+  object-fit: cover;
+  object-position: 50% 50%;
+  transition: transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.content {
+  min-inline-size: 0;
+  block-size: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  display: grid;
+  align-content: end;
+  gap: clamp(1rem, 2.2svh, 1.5rem);
+  padding:
+    clamp(1rem, 2.4svh, 1.6rem)
+    clamp(0.9rem, 1.4vw, 1.25rem)
+    clamp(1rem, 2.4svh, 1.6rem)
+    clamp(0.9rem, 1.4vw, 1.25rem);
+  transition:
+    opacity 320ms ease,
+    background-color 420ms ease,
+    inset 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    padding 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.copy {
+  display: grid;
+  gap: 3rem;
+  align-content: inherit;
+  min-inline-size: 0;
+  will-change: opacity;
+}
+
+.meta {
+  display: grid;
+  gap: clamp(0.75rem, 1.8svh, 1.05rem);
+}
+
+.title {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family:
+    var(--font-cormorant-garamond),
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Georgia,
+    serif;
+  font-size: clamp(1.35rem, 1.55vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: -0.04rem;
+}
+
+.description {
+  margin: 0;
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family:
+    var(--font-cormorant-garamond),
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Georgia,
+    serif;
+  font-size: clamp(0.72rem, 0.78vw, 0.9rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: clamp(1.35rem, 1.5vw, 1.9rem);
+  letter-spacing: -0.02rem;
+}
+
+.moreButton {
+  inline-size: max-content;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  gap: clamp(0.45rem, 0.75vw, 0.7rem);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(17, 13, 10, 0.92);
+  font-family:
+    var(--font-cormorant-garamond),
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Georgia,
+    serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02rem;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -0.16em;
+    block-size: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+}
+
+.moreButton:hover::after,
+.moreButton:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.moreButton:focus-visible {
+  outline: none;
+}
+
+.moreArrow {
+  display: inline-block;
+  line-height: 1;
+  transform: translateY(-0.03em) rotate(180deg);
+  transform-origin: 50% 50%;
+}
+
+@media (min-width: 769px) {
+  .item[data-variant="studio"][data-view="default"] .meta {
+    margin-block-end: 1rem;
+  }
+
+  .item[data-view="gallery"] {
+    position: relative;
+    grid-template-columns: minmax(0, 1fr);
+    inline-size: auto;
+    block-size: min(100%, var(--gallery-card-height, 34.75rem));
+    max-inline-size: var(--gallery-card-width, 25.75rem);
+    aspect-ratio: 103 / 139;
+    background: transparent;
+    overflow: clip;
+    outline: none;
+  }
+
+  .item[data-view="gallery"] .media {
+    block-size: 100%;
+    background: #ece8e2;
+  }
+
+  .item[data-view="gallery"] .image {
+    object-fit: cover;
+    object-position: 50% 50%;
+    transform: scale(1.01);
+  }
+
+  .item[data-view="gallery"] .content {
+    position: absolute;
+    inset: 0;
+    block-size: auto;
+    background: rgba(255, 255, 255, 0.80);
+    align-content: start;
+    justify-items: center;
+    gap: clamp(0.85rem, 1.6svh, 1.2rem);
+    padding:
+      4rem
+      clamp(0.95rem, 1.4vw, 1.3rem)
+      clamp(1rem, 2.8svh, 1.7rem)
+      clamp(0.95rem, 1.4vw, 1.3rem);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .item[data-view="gallery"] .copy {
+    gap: clamp(0.85rem, 1.6svh, 1.2rem);
+    align-content: start;
+    justify-items: center;
+    opacity: 1;
+  }
+
+  .item[data-view="gallery"] .meta {
+    gap: clamp(0.55rem, 1.2svh, 0.9rem);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .item[data-view="gallery"] .title {
+    font-size: clamp(1.15rem, 1.35vw, 1.5rem);
+    line-height: 3;
+
+  }
+
+  .item[data-view="gallery"] .description {
+    max-inline-size: min(100%, 50ch);
+    font-size: clamp(0.72rem, 0.7vw, 0.82rem);
+    line-height: clamp(1.1rem, 1.2vw, 1.35rem);
+    text-align: center;
+  }
+
+  .item[data-view="gallery"] .moreButton {
+    display: none;
+  }
+
+  .item[data-view="gallery"]:hover .content,
+  .item[data-view="gallery"]:focus-within .content,
+  .item[data-view="gallery"]:focus-visible .content {
+    opacity: 1;
+  }
+
+  .item[data-view="gallery"]:hover .image,
+  .item[data-view="gallery"]:focus-within .image,
+  .item[data-view="gallery"]:focus-visible .image {
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 768px) {
+  .item {
+    grid-template-columns: minmax(0, 1fr);
+    block-size: auto;
+    min-block-size: 0;
+    background: transparent;
+  }
+
+  .media {
+    block-size: auto;
+    aspect-ratio: 4 / 5;
+    background: #ece8e2;
+  }
+
+  .image {
+    object-fit: contain;
+    object-position: 50% 100%;
+  }
+
+  .item[data-variant="studio"] .image {
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .content {
+    block-size: auto;
+    background: transparent;
+    align-content: start;
+    gap: 0.7rem;
+    padding:
+      2rem
+      0
+      0
+      0;
+  }
+
+  .meta {
+    gap: 0.55rem;
+  }
+
+  .copy {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.65rem;
+  }
+
+  .moreButton {
+    display: inline-flex;
+    font-size: 1.25rem;
+    line-height: 1;
+    gap: 0.65rem;
+  }
+}

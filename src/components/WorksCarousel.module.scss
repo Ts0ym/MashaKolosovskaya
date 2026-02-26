@@ -1,0 +1,51 @@
+.viewport {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: clip;
+  background: #ece8e2;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.track {
+  block-size: 100%;
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+}
+
+.sequence {
+  flex: 0 0 auto;
+  block-size: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.sequence > * {
+  flex: 0 0 auto;
+}
+
+.viewportGallery {
+  --gallery-card-width: 25.75rem;
+  --gallery-card-height: 34.75rem;
+  background: transparent;
+  block-size: min(var(--gallery-card-height), 70svh);
+}
+
+.trackGallery {
+  align-items: center;
+}
+
+.sequenceGallery {
+  align-items: center;
+  --gallery-card-gap: clamp(0.35rem, 0.8vw, 0.7rem);
+  gap: var(--gallery-card-gap);
+  padding-inline-end: var(--gallery-card-gap);
+}
+
+@media (max-width: 768px) {
+  .viewport {
+    block-size: min(58svh, 31rem);
+  }
+}

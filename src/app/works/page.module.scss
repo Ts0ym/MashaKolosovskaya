@@ -1,0 +1,83 @@
+.copyBlock {
+  display: grid;
+  gap: 0;
+}
+
+.textPanel {
+  @media (max-width: 768px) {
+    order: 2;
+  }
+}
+
+.desktopBackStrip {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.worksPanel {
+  position: relative;
+  min-inline-size: 0;
+  background: #ece8e2;
+  overflow: clip;
+  display: grid;
+  align-items: stretch;
+
+  @media (max-width: 768px) {
+    order: 3;
+    min-block-size: auto;
+    background: #fff;
+    overflow: visible;
+    padding: 0;
+  }
+}
+
+.slider {
+  block-size: 100%;
+  min-block-size: 0;
+}
+
+.desktopSlider {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileList {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: grid;
+    gap: 1.7rem;
+    padding-inline: clamp(0.95rem, 1.8vw, 1.45rem);
+    padding-block-end: clamp(5.4rem, 16vw, 7rem);
+  }
+}
+
+.mobileBackStrip {
+  display: none;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 18;
+    display: flex;
+    align-items: center;
+    padding:
+      clamp(0.95rem, 1.8vw, 1.45rem)
+      clamp(0.95rem, 1.8vw, 1.45rem)
+      max(env(safe-area-inset-bottom), clamp(1.1rem, 2.2vw, 1.8rem))
+      clamp(0.95rem, 1.8vw, 1.45rem);
+    background: #fff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      inset-block-start: -0.5rem;
+      block-size: 0.5rem;
+      background: #fff;
+    }
+  }
+}

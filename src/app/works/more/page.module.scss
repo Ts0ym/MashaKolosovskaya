@@ -1,0 +1,191 @@
+.page {
+  --back-font-size: clamp(1.2rem, 0.95rem + 1vw, 1.5rem);
+  --back-line-height: clamp(1.35rem, 1.08rem + 1vw, 1.6875rem);
+
+  position: relative;
+  display: grid;
+  block-size: 100vh;
+  block-size: 100svh;
+  background: #fff;
+  overflow: clip;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    block-size: auto;
+    min-block-size: 100svh;
+    overflow-x: clip;
+    overflow-y: visible;
+    background: #fff;
+  }
+}
+
+.mobileHeaderPlacement {
+  @media (max-width: 768px) {
+    order: 1;
+  }
+}
+
+.desktopStage {
+  min-inline-size: 0;
+  display: grid;
+  align-items: center;
+  padding:
+    clamp(3.9rem, 8svh, 6rem)
+    0
+    clamp(4.7rem, 11svh, 7rem)
+    0;
+  background: #fff;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileCarouselSection {
+  display: none;
+
+  @media (max-width: 768px) {
+    order: 2;
+    display: block;
+    padding:
+      1.5rem
+      clamp(0.5rem, 1.4vw, 0.75rem)
+      0
+      clamp(0.5rem, 1.4vw, 0.75rem);
+    background: #fff;
+  }
+}
+
+.mobileCarouselViewport {
+  @media (max-width: 768px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.mobileCarouselTrack {
+  @media (max-width: 768px) {
+    display: flex;
+    gap: clamp(0.5rem, 1.4vw, 0.75rem);
+  }
+}
+
+.mobileCarouselSlide {
+  @media (max-width: 768px) {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+}
+
+.mobileCarouselMedia {
+  @media (max-width: 768px) {
+    position: relative;
+    inline-size: 100%;
+    aspect-ratio: 4 / 5.35;
+    background: #ece8e2;
+    overflow: clip;
+  }
+}
+
+.mobileCarouselImage {
+  @media (max-width: 768px) {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.desktopSlider {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.desktopBackDock {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-end: 0;
+  z-index: 14;
+  display: flex;
+  align-items: end;
+  padding:
+    clamp(0.65rem, 1.8svh, 1.05rem)
+    clamp(0.95rem, 1.8vw, 1.45rem)
+    clamp(0.65rem, 1.8svh, 1.05rem)
+    clamp(0.95rem, 1.8vw, 1.45rem);
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileList {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: grid;
+    gap: 1.25rem;
+    padding-inline: clamp(0.95rem, 1.8vw, 1.45rem);
+    padding-block-end: clamp(5.4rem, 16vw, 7rem);
+    background: #fff;
+  }
+}
+
+.mobileMetaBar {
+  display: none;
+
+  @media (max-width: 768px) {
+    order: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding:
+      1rem
+      clamp(0.5rem, 1.4vw, 0.75rem)
+      0
+      clamp(0.5rem, 1.4vw, 0.75rem);
+    background: #fff;
+  }
+}
+
+.mobileWorkTitle {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.88);
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family:
+      var(--font-cormorant-garamond),
+      "Iowan Old Style",
+      "Palatino Linotype",
+      "Book Antiqua",
+      Georgia,
+      serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.04rem;
+  }
+}
+
+.mobileBottomSpacer {
+  display: none;
+
+  @media (max-width: 768px) {
+    order: 4;
+    display: block;
+    block-size: max(env(safe-area-inset-bottom), clamp(0.9rem, 2.2vw, 1.3rem));
+    background: #fff;
+  }
+}

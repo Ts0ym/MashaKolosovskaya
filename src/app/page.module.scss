@@ -1,0 +1,306 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: clip;
+  isolation: isolate;
+  background: white;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: inherit;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding:
+    max(env(safe-area-inset-top), clamp(1rem, 3svh, 2rem))
+    max(env(safe-area-inset-right), clamp(1rem, 3vw, 2rem))
+    max(env(safe-area-inset-bottom), clamp(1rem, 3svh, 2rem))
+    max(env(safe-area-inset-left), clamp(1rem, 3vw, 2rem));
+
+  @media (max-width: 768px) {
+    grid-template-rows: auto 1fr;
+    padding:
+      max(env(safe-area-inset-top), clamp(0.7rem, 2svh, 1rem))
+      max(env(safe-area-inset-right), clamp(0.7rem, 3vw, 1rem))
+      max(env(safe-area-inset-bottom), clamp(0.7rem, 2svh, 1rem))
+      max(env(safe-area-inset-left), clamp(0.7rem, 3vw, 1rem));
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    justify-content: stretch;
+    align-items: start;
+  }
+}
+
+.topBar {
+  display: none;
+
+  @media (max-width: 768px) {
+    position: relative;
+    z-index: 5;
+    inline-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(0.75rem, 3vw, 1.25rem);
+  }
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  inline-size: min(100%, 42rem);
+  padding-inline: clamp(0.2rem, 1vw, 1rem);
+  color: rgba(18, 14, 11, 0.9);
+  text-align: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.menuLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-family:
+    var(--font-cormorant-garamond),
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Georgia,
+    serif;
+  font-size: 2.25rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 2.25rem;
+  text-decoration: none;
+  letter-spacing: -0.0675rem;
+  padding-inline: clamp(0.25rem, 0.6vw, 0.6rem);
+  padding-block: clamp(0.05rem, 0.15vw, 0.14rem);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu:has(.menuLink:hover) .menuLink,
+.menu:has(.menuLink:focus-visible) .menuLink {
+  opacity: 0.3;
+}
+
+.menu:has(.menuLink:hover) .menuLink:hover,
+.menu:has(.menuLink:focus-visible) .menuLink:focus-visible {
+  opacity: 1;
+  color: rgba(6, 4, 3, 0.98);
+}
+
+.menuLink:focus-visible {
+  outline: none;
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.signature {
+  margin: 0;
+  color: rgba(16, 12, 9, 0.92);
+  font-family:
+    var(--font-cormorant-garamond),
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Georgia,
+    serif;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.53125rem;
+  letter-spacing: -0.0675rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.7rem;
+    line-height: 1.05;
+    letter-spacing: -0.045rem;
+  }
+}
+
+.signatureMobile {
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+    flex: 1 1 auto;
+    min-inline-size: 0;
+    max-inline-size: none;
+    white-space: nowrap;
+  }
+}
+
+.signatureDesktop {
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.burgerButton {
+  display: none;
+
+  @media (max-width: 768px) {
+    --burger-line-gap: 0.5em;
+    --burger-line-thickness: 2px;
+    --burger-cross-shift: calc(var(--burger-line-gap) + var(--burger-line-thickness));
+
+    position: relative;
+    z-index: 5;
+    display: grid;
+    place-items: center end;
+    justify-items: end;
+    align-self: center;
+    flex: 0 0 auto;
+    inline-size: auto;
+    block-size: auto;
+    margin: 0;
+    padding:
+      clamp(0.35rem, 1vw, 0.5rem)
+      0
+      clamp(0.35rem, 1vw, 0.5rem)
+      clamp(0.6rem, 2vw, 0.9rem);
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.burgerIcon {
+  display: grid;
+  align-content: center;
+  gap: var(--burger-line-gap, 0.5em);
+  inline-size: clamp(1.5rem, 6vw, 1.95rem);
+}
+
+.burgerLine {
+  display: block;
+  inline-size: 100%;
+  block-size: var(--burger-line-thickness, 2px);
+  background: black;
+  transform-origin: 50% 50%;
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
+}
+
+.burgerButtonOpen .burgerLine:nth-child(1) {
+  transform: translateY(var(--burger-cross-shift, calc(0.5em + 2px))) rotate(45deg);
+}
+
+.burgerButtonOpen .burgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerButtonOpen .burgerLine:nth-child(3) {
+  transform: translateY(calc(0rem - var(--burger-cross-shift, calc(0.5em + 2px)))) rotate(-45deg);
+}
+
+.mobileOverlay {
+  display: none;
+
+  @media (max-width: 768px) {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: grid;
+    place-items: center;
+    padding:
+      max(env(safe-area-inset-top), clamp(4.5rem, 12svh, 6rem))
+      max(env(safe-area-inset-right), clamp(1rem, 4vw, 1.5rem))
+      max(env(safe-area-inset-bottom), clamp(1.25rem, 4svh, 2rem))
+      max(env(safe-area-inset-left), clamp(1rem, 4vw, 1.5rem));
+    background: white;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0ms linear 320ms;
+  }
+}
+
+.mobileMenu {
+  @media (max-width: 768px) {
+    inline-size: 100%;
+    max-inline-size: 20rem;
+    min-block-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.9rem, 2.2svh, 1.5rem);
+    text-align: center;
+  }
+}
+
+.mobileMenuLink {
+  @media (max-width: 768px) {
+    color: rgba(15, 12, 10, 0.8);
+    font-family:
+      var(--font-cormorant-garamond),
+      "Iowan Old Style",
+      "Palatino Linotype",
+      "Book Antiqua",
+      Georgia,
+      serif;
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.05;
+    text-decoration: none;
+    letter-spacing: -0.04rem;
+    transition: color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.mobileOverlayOpen {
+  @media (max-width: 768px) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+      opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0ms linear 0ms;
+  }
+}
+
+.mobileMenuLink:focus-visible,
+.mobileMenuLink:hover {
+  @media (max-width: 768px) {
+    color: rgba(8, 6, 5, 0.98);
+  }
+}
