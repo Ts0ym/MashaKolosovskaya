@@ -60,6 +60,9 @@
   --panel-bottom-pad: clamp(0.95rem, 2.4svh, 1.7rem);
   --back-strip-gap: clamp(0.65rem, 1.8svh, 1.05rem);
   --back-strip-height: calc(var(--back-strip-gap) * 2 + var(--back-font-size));
+  --scroll-bottom-safe: calc(
+    var(--back-strip-height) + var(--panel-bottom-pad) + clamp(0.35rem, 0.9svh, 0.6rem)
+  );
 
   position: relative;
   min-inline-size: 0;
@@ -86,7 +89,7 @@
   padding:
     var(--panel-top-pad)
     var(--panel-inline-pad)
-    var(--panel-top-pad)
+    var(--scroll-bottom-safe)
     var(--panel-inline-pad);
 
   @media (max-width: 768px) {
